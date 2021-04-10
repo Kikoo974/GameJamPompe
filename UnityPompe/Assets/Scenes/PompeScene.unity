@@ -1340,6 +1340,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water
       objectReference: {fileID: 0}
+    - target: {fileID: 8393562517773553306, guid: e0275b135999fbe4f97fdd7ad9347e18, type: 3}
+      propertyPath: SizeModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0275b135999fbe4f97fdd7ad9347e18, type: 3}
 --- !u!1 &872995840
@@ -2155,6 +2159,14 @@ PrefabInstance:
     - target: {fileID: 7443047421327980855, guid: e0275b135999fbe4f97fdd7ad9347e18, type: 3}
       propertyPath: m_Name
       value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393562517773553306, guid: e0275b135999fbe4f97fdd7ad9347e18, type: 3}
+      propertyPath: SizeModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393562517773553306, guid: e0275b135999fbe4f97fdd7ad9347e18, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0275b135999fbe4f97fdd7ad9347e18, type: 3}
