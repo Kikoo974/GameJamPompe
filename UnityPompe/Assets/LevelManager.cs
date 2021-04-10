@@ -8,20 +8,10 @@ public class LevelManager : MonoBehaviour
 {
     public float time = 10;
     public Text timer;
-    public GameObject pompe;
-    public GameObject Poule;
-    public float scale = 0.2f;
-    public TextMeshPro NbpomperText;
-    int nbPomper = 0;
-    private Vector2 pos;
-    private bool down = false;
-    public Input up;
-    public float speedX =0.5f, speedY = 0.05f;
+    public int nbPompJ1, nbPompJ2;
     // Start is called before the first frame update
     void Start()
     {
-        pos = pompe.transform.position;
-        NbpomperText.text = "" + nbPomper;
         timer.text = "" + (int)time;
     }
 
@@ -32,30 +22,19 @@ public class LevelManager : MonoBehaviour
         if (time >= 0)
         {
             time -= Time.deltaTime;
-            timer.text = "" + (int)time;
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-
-                if (down)
-                    pompe.transform.position = pos;
-                else
-                {
-                    Poule.transform.localScale += new Vector3(scale, scale);
-                    nbPomper += 1;
-                    NbpomperText.text = "" + nbPomper;
-                    Vector2 newPos = pos;
-                    newPos.y -= 0.83f;
-                    pompe.transform.position = newPos;
-                }
-                down = !down;
-
-            }
+            timer.text = "" + (int)time;         
         }
-        else
-            Poule.transform.position += new Vector3(Random.Range(-speedX, speedX), speedY);
     }
-       
-       
+    public void PompeJ1(int j)
+    {
+        if(j==1)
+            nbPompJ1 ++;
+        else
+            nbPompJ2++;
+    }
+   
+
+
 
 
 }
