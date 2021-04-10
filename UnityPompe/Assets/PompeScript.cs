@@ -45,7 +45,7 @@ public class PompeScript : MonoBehaviour
             }
         }
         else
-            Poule.transform.position += new Vector3(0, 0.1f);
+            Poule.transform.position += new Vector3(Random.Range(-0.5f, 0.5f) * Time.deltaTime, 0.1f, 0);
 
 
     }

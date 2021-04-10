@@ -16,7 +16,10 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        pos.y = poulePos.position.y + 1.44f;
-        gameObject.transform.position = pos;
+        if (poulePos.position.y > 6)
+        {
+            pos.y = poulePos.position.y + 1.44f;
+            gameObject.transform.position = pos;
+        }
     }
 }

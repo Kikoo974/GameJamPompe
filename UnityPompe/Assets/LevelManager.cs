@@ -15,6 +15,8 @@ public class LevelManager : MonoBehaviour
     int nbPomper = 0;
     private Vector2 pos;
     private bool down = false;
+    public Input up;
+    public float speedX =0.5f, speedY = 0.05f;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +52,7 @@ public class LevelManager : MonoBehaviour
             }
         }
         else
-            Poule.transform.position += new Vector3(0, 0.1f);
+            Poule.transform.position += new Vector3(Random.Range(-speedX, speedX), speedY);
     }
        
        
