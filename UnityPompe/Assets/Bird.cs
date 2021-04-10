@@ -16,6 +16,7 @@ public class Bird : MonoBehaviour
     void Update()
     {
         pos.x += Time.deltaTime * speed;
+        pos.y += Time.deltaTime * 20;
         gameObject.transform.position = pos;
 
     }
