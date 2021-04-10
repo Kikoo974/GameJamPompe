@@ -35,16 +35,25 @@ public class PouleMove : MonoBehaviour
                 if (X < -10)
                     X = -10;
             }
-            ppos.x += X * Time.deltaTime;
+            ppos.x += X  * Time.deltaTime;
             ppos.y += speedY * Time.deltaTime;
             gameObject.transform.position = ppos;
         }
     }
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.tag == "Obstacle")
-            speedY--;
-        if (other.collider.tag == "Player")
+        if (other.gameObject.tag == "Obstacle")
+            transform.localScale -= new Vector3(0.02f, 0.02f);
+        if (other.gameObject.tag == "Player")
             ppos.x -= 30 * X  * Time.deltaTime;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            transform.localScale -= new Vector3(0.02f, 0.02f);
+            ppos.y -= 0.1f;
+            collision.gameObject.SetActive(false);
+        }
     }
 }
