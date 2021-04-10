@@ -10,7 +10,7 @@ public class PouleMove : MonoBehaviour
     float speedX = 5, speedY = 20;
     int sign;
     float X;
-  
+   
     void Start()
     {
         ppos = gameObject.transform.position;
@@ -22,6 +22,7 @@ public class PouleMove : MonoBehaviour
       
         if (level.time<0)
         {
+          
             if (Input.GetKey(Right))
             {
                 X += 0.01f;
