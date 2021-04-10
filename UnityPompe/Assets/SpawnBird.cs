@@ -13,9 +13,10 @@ public class SpawnBird : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnTile();
-        SpawnTile();
-        SpawnTile();
+        for (int i = 0; i < 3; i++)
+        {
+            SpawnTile();
+        }
     }
 
     // Update is called once per frame
