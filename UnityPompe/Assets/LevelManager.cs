@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class PompeScript : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
+    public float time = 10;
+    public Text timer;
     public GameObject pompe;
     public GameObject Poule;
-    public LevelManager levelManager;
     public float scale = 0.2f;
     public TextMeshPro NbpomperText;
     int nbPomper = 0;
@@ -19,13 +20,17 @@ public class PompeScript : MonoBehaviour
     {
         pos = pompe.transform.position;
         NbpomperText.text = "" + nbPomper;
+        timer.text = "" + (int)time;
     }
-   
+
     // Update is called once per frame
     void Update()
     {
-        if (levelManager.time > 0)
+
+        if (time >= 0)
         {
+            time -= Time.deltaTime;
+            timer.text = "" + (int)time;
             if (Input.GetKeyDown(KeyCode.Space))
             {
 
@@ -46,7 +51,12 @@ public class PompeScript : MonoBehaviour
         }
         else
             Poule.transform.position += new Vector3(0, 0.1f);
-
-
     }
+       
+       
+
+
 }
+    
+   
+
