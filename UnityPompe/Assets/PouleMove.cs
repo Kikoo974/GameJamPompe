@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class PouleMove : MonoBehaviour
 {
-    public LevelManager level;
     public KeyCode Right, Left;
     Vector2 ppos;
     float speedX = 5, speedY = 20;
     int sign;
     float X;
-   
+    bool decrease;
+    public bool canMove;
+    Quaternion rotation;
     void Start()
     {
         ppos = gameObject.transform.position;
@@ -20,11 +21,13 @@ public class PouleMove : MonoBehaviour
     void Update()
     {
       
-        if (level.time<0)
+        if (canMove)
         {
           
             if (Input.GetKey(Right))
             {
+              
+                decrease = false;
                 X += 0.01f;
                 if (X > 10)
                     X = 10;
@@ -32,10 +35,23 @@ public class PouleMove : MonoBehaviour
             }
             if (Input.GetKey(Left))
             {
+                decrease = false;
                 X -= 0.01f;
                 if (X < -10)
                     X = -10;
             }
+            if (Input.GetKeyUp(Left))
+                decrease = true;
+            if (Input.GetKeyUp(Right))
+                decrease = true;
+            if(decrease)
+                X *= 0.99f;
+            if (ppos.x < -10)
+                ppos.x = 9;
+            if (ppos.x > 9)
+                ppos.x = -10;
+            rotation = Quaternion.Euler(0, 0, -X*2);
+            gameObject.transform.rotation = rotation;
             ppos.x += X  * Time.deltaTime;
             ppos.y += speedY * Time.deltaTime;
             gameObject.transform.position = ppos;
@@ -46,7 +62,11 @@ public class PouleMove : MonoBehaviour
         if (other.gameObject.tag == "Obstacle")
             transform.localScale -= new Vector3(0.02f, 0.02f);
         if (other.gameObject.tag == "Player")
-            ppos.x -= 30 * X  * Time.deltaTime;
+        {
+            other.gameObject.GetComponent<PouleMove>().ppos.x += 30 * X * Time.deltaTime;
+            ppos.x -= 10 * X * Time.deltaTime;
+        }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

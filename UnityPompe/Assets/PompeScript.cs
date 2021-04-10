@@ -11,18 +11,18 @@ public class PompeScript : MonoBehaviour
     public GameObject Poule;
     public float scale = 0.2f;
     public TextMeshPro NbpomperText;
-     int nbPomper = 0;
+    int nbPomper = 0;
     private Vector2 pos;
     private bool down = false;
     public KeyCode up;
-
-    int J = 1;
+    ParticleSystem waterSpash;
+    public int J = 1;
     // Start is called before the first frame update
     void Start()
     {
         pos = pompe.transform.position;
         NbpomperText.text = "" + nbPomper;
-        
+        waterSpash = gameObject.GetComponentInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -39,9 +39,17 @@ public class PompeScript : MonoBehaviour
                 else
                 {
                     Poule.transform.localScale += new Vector3(scale, scale);
-                    level.PompeJ1(1);
-                    if(J==1) NbpomperText.text = "" + level.nbPompJ1;
-                    else NbpomperText.text = "" + level.nbPompJ2;
+                    waterSpash.Play();
+                    if (J == 1)
+                    {
+                        level.PompeJ1(1);
+                        NbpomperText.text = "" + level.nbPompJ1;
+                    }
+                    else
+                    {
+                        level.PompeJ1(2);
+                        NbpomperText.text = "" + level.nbPompJ2;
+                    }
                     Vector2 newPos = pos;
                     newPos.y -= 0.83f;
                     pompe.transform.position = newPos;

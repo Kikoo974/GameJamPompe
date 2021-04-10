@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public LevelManager level;
-    public Transform poulePos;
+    public Transform poulePosJ1, poulePosJ2;
     Vector3 pos;
     float speedY = 20;
     void Start()
@@ -16,10 +16,11 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (level.time <=0)
+        if (poulePosJ1.position.y >4 || poulePosJ2.position.y > 4)
         {
             pos.y += speedY * Time.deltaTime;
             gameObject.transform.position = pos;
         }
+       
     }
 }

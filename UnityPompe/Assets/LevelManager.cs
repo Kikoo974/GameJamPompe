@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
     public float time = 10;
     public Text timer;
     public int nbPompJ1, nbPompJ2;
+    public PouleMove J1, J2;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,11 +20,17 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
 
-        if (time >= 0)
+        if (time > 0)
         {
             time -= Time.deltaTime;
             timer.text = "" + (int)time;         
         }
+        else if(time <0)
+        {
+            time = 0;
+            StartCoroutine(Test());
+        }
+            
     }
     public void PompeJ1(int j)
     {
@@ -31,6 +38,22 @@ public class LevelManager : MonoBehaviour
             nbPompJ1 ++;
         else
             nbPompJ2++;
+    }
+    IEnumerator Test()
+    {
+        if(nbPompJ1 >nbPompJ2)
+        {
+            J1.canMove = true;
+            yield return new WaitForSeconds(0.1f);
+            J2.canMove = true;
+        }
+        else
+        {
+            J2.canMove = true;
+            yield return new WaitForSeconds(0.1f);
+            J1.canMove = true;
+        }
+        yield return new WaitForSeconds(0.1f);
     }
    
 

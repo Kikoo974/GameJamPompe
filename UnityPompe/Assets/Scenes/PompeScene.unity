@@ -307,9 +307,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8485b590e8694c64ab2e26c49415ae71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 1299999859}
   Right: 100
   Left: 113
+  canMove: 0
 --- !u!70 &71340667
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -879,7 +879,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 1299999859}
-  poulePos: {fileID: 71340665}
+  poulePosJ1: {fileID: 71340665}
+  poulePosJ2: {fileID: 1302603583}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1088,8 +1089,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1697332005
-  m_SortingLayer: 3
+  m_SortingLayerID: -1553651099
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -953005613708528388, guid: b150261b43339904b9db849988296bb3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1551,7 +1552,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030762359}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 0.7, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2100404257}
@@ -1638,6 +1639,8 @@ MonoBehaviour:
   timer: {fileID: 1512432307}
   nbPompJ1: 0
   nbPompJ2: 0
+  J1: {fileID: 71340666}
+  J2: {fileID: 1302603584}
 --- !u!1 &1302603582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,9 +1692,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8485b590e8694c64ab2e26c49415ae71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 1299999859}
   Right: 275
   Left: 276
+  canMove: 0
 --- !u!212 &1302603585
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2268,6 +2271,7 @@ MonoBehaviour:
   scale: 0.02
   NbpomperText: {fileID: 1867625650}
   up: 273
+  J: 2
 --- !u!212 &1829345111
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2644,8 +2648,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1697332005
-  m_SortingLayer: 3
+  m_SortingLayerID: -1553651099
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -953005613708528388, guid: b150261b43339904b9db849988296bb3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2694,6 +2698,7 @@ MonoBehaviour:
   scale: 0.02
   NbpomperText: {fileID: 1735924265}
   up: 122
+  J: 1
 --- !u!212 &2100404256
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2940,12 +2945,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7370508226201703845, guid: 0c472035c3ad5fa45ae1b6be32c2312d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -0.7149288
+      objectReference: {fileID: 0}
+    - target: {fileID: 7370508226201703845, guid: 0c472035c3ad5fa45ae1b6be32c2312d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7593472
+      objectReference: {fileID: 0}
+    - target: {fileID: 7370508226201703845, guid: 0c472035c3ad5fa45ae1b6be32c2312d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3
+      value: -3.4547
       objectReference: {fileID: 0}
     - target: {fileID: 7370508226201703845, guid: 0c472035c3ad5fa45ae1b6be32c2312d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.79
+      value: 1.92
       objectReference: {fileID: 0}
     - target: {fileID: 7370508226201703845, guid: 0c472035c3ad5fa45ae1b6be32c2312d, type: 3}
       propertyPath: m_LocalPosition.z
