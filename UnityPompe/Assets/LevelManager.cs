@@ -7,7 +7,7 @@ using TMPro;
 public class LevelManager : MonoBehaviour
 {
     public float time = 10;
-    public Text timer;
+    public TextMeshPro timer;
     public int nbPompJ1, nbPompJ2;
     public PouleMove J1, J2;
     // Start is called before the first frame update
@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour
         if (time > 0)
         {
             time -= Time.deltaTime;
-            timer.text = "" + (int)time;         
+            timer.text = "" + ((int)time +1);         
         }
         else if(time <0)
         {
