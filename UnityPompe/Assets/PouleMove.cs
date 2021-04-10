@@ -46,10 +46,10 @@ public class PouleMove : MonoBehaviour
                 decrease = true;
             if(decrease)
                 X *= 0.99f;
-            if (ppos.x < -10)
-                ppos.x = 9;
-            if (ppos.x > 9)
-                ppos.x = -10;
+            if (ppos.x < -11) 
+                ppos.x = 11;
+            if (ppos.x > 11)
+                ppos.x = -11;
             rotation = Quaternion.Euler(0, 0, -X*2);
             gameObject.transform.rotation = rotation;
             ppos.x += X  * Time.deltaTime;
