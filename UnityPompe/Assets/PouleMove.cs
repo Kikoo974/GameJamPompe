@@ -11,6 +11,7 @@ public class PouleMove : MonoBehaviour
     float X;
     bool decrease;
     public bool canMove;
+    Quaternion rotation;
     void Start()
     {
         ppos = gameObject.transform.position;
@@ -25,6 +26,7 @@ public class PouleMove : MonoBehaviour
           
             if (Input.GetKey(Right))
             {
+              
                 decrease = false;
                 X += 0.01f;
                 if (X > 10)
@@ -43,11 +45,13 @@ public class PouleMove : MonoBehaviour
             if (Input.GetKeyUp(Right))
                 decrease = true;
             if(decrease)
-                X *= 0.98f;
+                X *= 0.99f;
             if (ppos.x < -10)
                 ppos.x = 9;
             if (ppos.x > 9)
                 ppos.x = -10;
+            rotation = Quaternion.Euler(0, 0, -X*2);
+            gameObject.transform.rotation = rotation;
             ppos.x += X  * Time.deltaTime;
             ppos.y += speedY * Time.deltaTime;
             gameObject.transform.position = ppos;
