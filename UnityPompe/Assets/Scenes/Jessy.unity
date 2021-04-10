@@ -299,13 +299,13 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 666527735}
   serializedVersion: 7
-  lengthInSec: 3
+  lengthInSec: 2
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -374,7 +374,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.8
+      scalar: 1.5
       minScalar: 0.8
       maxCurve:
         serializedVersion: 2
@@ -5152,7 +5152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4059582628216308603, guid: e0275b135999fbe4f97fdd7ad9347e18, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.61
+      value: -1.53
       objectReference: {fileID: 0}
     - target: {fileID: 4059582628216308603, guid: e0275b135999fbe4f97fdd7ad9347e18, type: 3}
       propertyPath: m_LocalPosition.z
