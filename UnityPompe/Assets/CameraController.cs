@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (poulePosJ1.position.y >4 || poulePosJ2.position.y > 4)
+        if (poulePosJ1.position.y >3.5 || poulePosJ2.position.y > 3.5)
         {
             pos.y += speedY * Time.deltaTime;
             gameObject.transform.position = pos;

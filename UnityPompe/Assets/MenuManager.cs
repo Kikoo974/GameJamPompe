@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class MenuManager : MonoBehaviour
 {
     SceneManager scene;
+    AudioSource poka;
     // Start is called before the first frame update
     void Start()
     {
-        
+        poka = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -19,10 +21,11 @@ public class MenuManager : MonoBehaviour
     }
     public void OnClick(int button)
     {
+        poka.Play();
         switch(button)
         {
             case 0:
-                StartCoroutine(Charger());
+                SceneManager.LoadScene(1);
                 break;
             case 1:
                 Application.Quit();

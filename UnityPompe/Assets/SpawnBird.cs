@@ -28,7 +28,7 @@ public class SpawnBird : MonoBehaviour
             SpawnTile();
             print(Spawn);
             print(BirdPosition.position.y);
-            DeleteBird();
+           // DeleteBird();
         }
       
     }

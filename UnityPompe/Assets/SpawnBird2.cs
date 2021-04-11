@@ -7,16 +7,13 @@ public class SpawnBird2 : MonoBehaviour
     public GameObject BirdOBJ;
     public float Spawn = 0;
     public float length = 15;
-    public Transform BirdPosition;
+    public Transform camPos;
     float time = 3.0f;
     private List<GameObject> ActiveBird = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            SpawnTile();
-        }
+        SpawnTile();
     }
 
     // Update is called once per frame
@@ -26,9 +23,9 @@ public class SpawnBird2 : MonoBehaviour
         if(time<=0)
         {
             SpawnTile();
-            print(Spawn);
-            print(BirdPosition.position.y);
-            DeleteBird();
+
+
+           // DeleteBird();
             time = Random.Range(3, 5);
         }
        
@@ -37,24 +34,29 @@ public class SpawnBird2 : MonoBehaviour
 
     public void SpawnTile()
     {
-        for (int i = 1; i < Random.Range(2, 4); i++)
+        float Randome;
+        if ((int)Random.Range(1, 3) == 1)
+            Randome = Random.Range(-13f, -19f);
+        else
+            Randome = Random.Range(10f, 13f);
+        float posRAn = camPos.position.y + Random.Range(-5, 5);
+
+        GameObject go = Instantiate(BirdOBJ, new Vector3(Randome, posRAn), transform.rotation);
+        if (Randome > 0)
         {
-            float Randome;
-            if(Random.Range(1,2) ==1)
-                Randome = Random.Range(-20f, -10f);
-            else
-                Randome = Random.Range(10f, 20f);
-            GameObject go = Instantiate(BirdOBJ, new Vector3(Randome, BirdPosition.position.y + Random.Range(-5,5)), transform.rotation);
-            go.GetComponent<Bird>().speed = Random.Range(-30,30);
-            if (go.GetComponent<Bird>().speed > 0)
-                go.transform.localScale = new Vector3(-1, 1);
-            go.transform.localScale *= Random.Range(0.3f, 1);
-            ActiveBird.Add(go);
-            Spawn += length;
+            go.GetComponent<Bird>().speed = Random.Range(-3, 0) * 10;
+            go.transform.localScale = new Vector3(1, 1);
         }
+        else
+        {
+            go.GetComponent<Bird>().speed = Random.Range(1, 4) * 10;
+        }
+        go.transform.localScale *= Random.Range(0.3f, 1);
+        ActiveBird.Add(go);
 
     }
-
+    
+    
     public void DeleteBird()
     {
         Destroy(ActiveBird[0]);

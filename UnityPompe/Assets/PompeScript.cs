@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Audio;
 
 public class PompeScript : MonoBehaviour
 {
     public LevelManager level;
     public GameObject pompe;
     public GameObject Poule;
+    public Animator renard; 
     public float scale = 0.2f;
     public TextMeshPro NbpomperText;
     int nbPomper = 0;
@@ -17,12 +19,23 @@ public class PompeScript : MonoBehaviour
     public KeyCode up;
     ParticleSystem waterSpash;
     public int J = 1;
+     AudioSource[] sounds;
+     AudioSource exp;
+     AudioSource insp;
+
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         pos = pompe.transform.position;
         NbpomperText.text = "" + nbPomper;
         waterSpash = gameObject.GetComponentInChildren<ParticleSystem>();
+        sounds = gameObject.GetComponents<AudioSource>();
+        insp = sounds[0];
+        exp = sounds[1];
     }
 
     // Update is called once per frame
@@ -35,11 +48,19 @@ public class PompeScript : MonoBehaviour
             {
 
                 if (down)
+                {
                     pompe.transform.position = pos;
+                    renard.SetBool("isDown", false);
+                    insp.Play();
+                }
                 else
                 {
-                    Poule.transform.localScale += new Vector3(scale, scale);
+                    renard.SetBool("isDown", true);
+                  
+                    Poule.transform.localScale *= 1.02f;
+                    // Poule.transform.localScale += new Vector3(scale, scale);
                     waterSpash.Play();
+                    exp.Play();
                     if (J == 1)
                     {
                         level.PompeJ1(1);
@@ -51,7 +72,7 @@ public class PompeScript : MonoBehaviour
                         NbpomperText.text = "" + level.nbPompJ2;
                     }
                     Vector2 newPos = pos;
-                    newPos.y -= 0.83f;
+                    newPos.y -= 0.63f;
                     pompe.transform.position = newPos;
                 }
                 down = !down;
