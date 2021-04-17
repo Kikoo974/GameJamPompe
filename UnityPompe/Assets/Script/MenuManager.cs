@@ -30,6 +30,12 @@ public class MenuManager : MonoBehaviour
             case 1:
                 Application.Quit();
                 break;
+            case 2:
+                SceneManager.LoadScene(2);
+                break;
+            case 3:
+                SceneManager.LoadScene(3);
+                break;
 
 
         }

@@ -7,6 +7,9 @@ TagManager:
   - Obstacle
   - Destroy
   - Oeuf
+  - Wing2
+  - Wing1
+  - Spike
   layers:
   - Default
   - TransparentFX

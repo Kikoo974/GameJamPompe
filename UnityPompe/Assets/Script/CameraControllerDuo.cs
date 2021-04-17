@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class CameraControllerDuo : MonoBehaviour
 {
-    public LevelManager level;
-    public Transform poulePosJ1, poulePosJ2;
+    public LevelManagerDuo level;
+    public Transform poulePosJ1;
     Vector3 pos;
     float speedY = 20;
     void Start()
@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (poulePosJ1.position.y >3.5 || poulePosJ2.position.y > 3.5)
+        if (poulePosJ1.position.y >3.5)
         {
             pos.y += speedY * Time.deltaTime;
             gameObject.transform.position = pos;

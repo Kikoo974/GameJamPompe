@@ -12,19 +12,20 @@ public class LevelManager : MonoBehaviour
     public TextMeshPro timer, WinText;
     
     public int nbPompJ1, nbPompJ2;
-    public GameObject pouleJ1, pouleJ2, cam, button, quit, touche;
-    PouleMove J1, J2;
-    public GameObject spawnB, spawnO, spawnO1, spawnO2, spawnO3, spawnO4;
+    public GameObject pouleJ1, pouleJ2, cam, button, quit, touche, spike;
+    PouleMoveBaloon J1, J2;
+    public GameObject spawnB, spawnO, spawnO1, spawnO2;
     public GameObject CielRep, Ciel0;
     private List<GameObject> Ciels = new List<GameObject>();
     bool isPause = false;
     AudioSource poka;
+    int lifeJ1 = 1, lifeJ2 = 1;
     // Start is called before the first frame update
     void Start()
     {
         Ciels.Add(Ciel0);
-        J1 = pouleJ1.GetComponent<PouleMove>();
-        J2 = pouleJ2.GetComponent<PouleMove>();
+        J1 = pouleJ1.GetComponent<PouleMoveBaloon>();
+        J2 = pouleJ2.GetComponent<PouleMoveBaloon>();
         poka = GetComponent<AudioSource>();
         timer.text = "" + (int)time;
     }
@@ -58,14 +59,14 @@ public class LevelManager : MonoBehaviour
             time = 0;
             StartCoroutine(Test());
         }
-        if(pouleJ1.transform.position.y< cam.transform.position.y - 4.2)
+      /*  if(pouleJ1.transform.position.y< cam.transform.position.y - 4.2)
         {
             Win(2);
         }
         if (pouleJ2.transform.position.y < cam.transform.position.y - 4.2)
         {
             Win(1);
-        }
+        }*/
 
     }
     void SpawnCiel()
@@ -86,8 +87,21 @@ public class LevelManager : MonoBehaviour
         else
             nbPompJ2++;
     }
+    public void Damage(int J)
+    {
+        if (J == 1)
+            lifeJ1--;
+        else
+            lifeJ2--;
+        if (lifeJ1 <= 0)
+            Win(2);
+        if (lifeJ2 <= 0)
+            Win(1);
+    }
     IEnumerator Test()
     {
+        lifeJ1 = nbPompJ1;
+        lifeJ2 = nbPompJ2;
 
         if(nbPompJ1 >nbPompJ2)
         {
@@ -105,6 +119,7 @@ public class LevelManager : MonoBehaviour
             J1.canMove = true;
             J1.canMove = true;
         }
+        spike.SetActive(true);
         touche.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         spawnB.SetActive(true);
@@ -114,9 +129,7 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(12);
         spawnO2.SetActive(true);
         yield return new WaitForSeconds(14);
-        spawnO3.SetActive(true);
-        yield return new WaitForSeconds(15);
-        spawnO4.SetActive(true);
+        
 
     }
     void Win(int player)

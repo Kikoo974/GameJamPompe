@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OuefSpawn : MonoBehaviour
+public class OuefSpawnBaloon : MonoBehaviour
 {
     float timeSpawn = 3.0f;
     public GameObject Oeuf, OuefBase;
@@ -11,6 +11,7 @@ public class OuefSpawn : MonoBehaviour
     Vector2 posOeuf;
     float speed = 3.0f;
     bool canMove = false;
+    float R, L;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,7 @@ public class OuefSpawn : MonoBehaviour
         posOeuf = gameObject.transform.position;
         if (canMove)
         {
+
             if (posOeuf.x < -10)
             {
                 posOeuf = new Vector3(-10, posOeuf.y);
@@ -47,11 +49,11 @@ public class OuefSpawn : MonoBehaviour
                    Destroyer();
                 
 
-            timeSpawn = Random.Range(1, 5);
+            timeSpawn = Random.Range(3, 7);
         }
         gameObject.transform.position = posOeuf;
     }       
-   
+  
     private void Destroyer()
     {
      

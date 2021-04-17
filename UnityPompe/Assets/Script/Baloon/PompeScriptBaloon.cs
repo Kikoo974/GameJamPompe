@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Audio;
 
-public class PompeScript : MonoBehaviour
+public class PompeScriptBaloon : MonoBehaviour
 {
     public LevelManager level;
     public GameObject pompe;
@@ -42,7 +42,7 @@ public class PompeScript : MonoBehaviour
     void Update()
     {
 
-        if (level.time >= 0)
+        if (level.time > 0)
         {
             if (Input.GetKeyDown(up))
             {
@@ -56,7 +56,7 @@ public class PompeScript : MonoBehaviour
                 else
                 {
                     renard.SetBool("isDown", true);
-                  
+
                     Poule.transform.localScale *= 1.02f;
                     // Poule.transform.localScale += new Vector3(scale, scale);
                     waterSpash.Play();
